@@ -1,3 +1,4 @@
+
 const produits = [
     { id: 1, nom: "Clavier", categorie: "Accessoires", prix: 120, stock: 5 },
     { id: 2, nom: "Souris", categorie: "Accessoires", prix: 80, stock: 8 },
@@ -9,18 +10,19 @@ console.log("Catalogue des produits :");
 produits.forEach(produit => {
     console.log(produit.nom, "-", produit.prix, "MAD");
 });
+
 const produitsDisponibles = produits.filter(
     produit => produit.stock > 0
 );
-
 console.log("Produits disponibles :", produitsDisponibles);
 console.log("Nombre de produits disponibles :", produitsDisponibles.length);
+
 const valeurStock = produits.reduce(
     (total, produit) => total + produit.prix * produit.stock,
     0
 );
-
 console.log("Valeur totale du stock :", valeurStock, "MAD");
+
 if (produitsDisponibles.length > 0) {
     const produitMoinsCher = produitsDisponibles.reduce(
         (moinsCher, produit) =>
@@ -32,10 +34,10 @@ if (produitsDisponibles.length > 0) {
 
     const { nom, prix } = produitMoinsCher;
     console.log("Destructuring :", nom, "-", prix, "MAD");
-
 } else {
     console.log("Aucun produit disponible.");
 }
+
 const resumeCatalogue = produits.map(
     produit =>
         `${produit.nom} - ${produit.prix} MAD - ${produit.stock} unités`
@@ -43,13 +45,8 @@ const resumeCatalogue = produits.map(
 
 console.log("Résumé du catalogue :");
 console.log(resumeCatalogue);
-console.log("Test catalogue vide :");
 
-console.log(
-    "Valeur totale :",
-    [].reduce((total, produit) => total + produit.prix * produit.stock, 0),
-    "MAD"
-);
+
 function estValide(produit) {
     return (
         typeof produit.prix === "number" &&
@@ -58,8 +55,3 @@ function estValide(produit) {
         produit.stock >= 0
     );
 }
-console.log("Test validation :");
-
-console.log(estValide(produits[0]));
-
-console.log(estValide({ prix: -10, stock: 5 }));
